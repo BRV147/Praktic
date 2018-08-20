@@ -6925,7 +6925,7 @@ fi
 #Custom part
 mkdir /srv/salt
 mkdir /srv/pillar
-git clone https://github.com/BRV147/Praktic.git /srv/pillar
+mv /Praktic/powerdns.sls /srv/pillar/
 touch /srv/salt/top.sls
 touch /srv/pillar/top.sls
 touch /etc/salt/autosign.conf
