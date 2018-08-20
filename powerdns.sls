@@ -73,6 +73,7 @@ powerdns:
 
 
   native_config:
+  
     config-dir: /etc/pdns
     daemon: yes
     disable-tcp: no
@@ -88,3 +89,9 @@ powerdns:
     loglevel: 4
     setgid: pdns
     setuid: pdns
+    
+  recursor_config:
+    forward-zones=.=127.0.0.1:5300
+    local-port=53
+    local-address=${INSTANCE_IP}
+
