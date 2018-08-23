@@ -4,7 +4,6 @@ powerdns:
     keyid: FF389421CBC8B383
 
   config:
-    allow-axfr-ips: '127.0.0.0/8,::1'
     api: 'yes'
     api-key: d34db33f
     webserver: 'yes'
@@ -18,7 +17,6 @@ powerdns:
     gmysql-dnssec: 'yes'
 
   master_config:
-    allow-axfr-ips: '127.0.0.0/8,::1'
     config-dir: /etc/pdns
     daemon: 'yes'
     disable-axfr: 'no'
@@ -29,7 +27,6 @@ powerdns:
     #gmysql-dbname: ${DB_SCHEMA}
     gmysql-user: powerdns
     gmysql-password: root123
-    local-address: '10.10.1.3'
     local-port: 53
     log-dns-details: 'on'
     loglevel: 4
@@ -40,12 +37,10 @@ powerdns:
     experimental-json-interface: yes
     experimental-api-key: 'root123'
     webserver: 'yes'
-    webserver-address: '10.10.1.3'
     webserver-port: 8081
     webserver-allow-from: 0.0.0.0/0,::/0
   
   slave_config:
-    allow-axfr-ips: '127.0.0.0/8,::1'
     config-dir: /etc/pdns
     daemon: 'yes'
     disable-axfr: 'no'
@@ -56,7 +51,6 @@ powerdns:
     #gmysql-dbname: ${DB_SCHEMA}
     gmysql-user: powerdns
     gmysql-password: root123
-    local-address: '10.10.1.3'
     local-port: 53
     log-dns-details: 'on'
     loglevel: 4
@@ -67,7 +61,6 @@ powerdns:
     experimental-json-interface: 'yes'
     experimental-api-key: 'root123'
     webserver: 'yes'
-    webserver-address: '10.10.1.3'
     webserver-port: 8081
     webserver-allow-from: '0.0.0.0/0,::/0'
 
