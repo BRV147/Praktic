@@ -73,8 +73,16 @@ jobs:
 
   apply:
     <<: *apply_job
-  apply-with-approval:
-    <<: *apply_job
+  destroy-with-approval:
+    <<: *default_config
+    steps:
+      - *restore_repo
+      - *terraform_init
+      - run:
+          name: terraform destroy
+          command: |
+            cd ~/test
+            terraform destroy --auto-approve 
 
 workflows:
   version: 2
@@ -91,7 +99,7 @@ workflows:
           filters:
             branches:
               only: master
-      - apply-with-approval:
+      - destroy-with-approval:
           requires:
             - approve
           filters:
