@@ -6,7 +6,7 @@ base_image: &base_image
   hashicorp/terraform:light
 
 working_directory: &working_directory
-  ~/
+  ~/test
 
 default_config: &default_config
   docker:
@@ -31,7 +31,7 @@ terraform_init: &terraform_init
   run:
     name: terraform init
     command: |
-      cd ~/
+      cd ~/test
       terraform init
 apply_job: &apply_job
   <<: *default_config
@@ -43,7 +43,7 @@ apply_job: &apply_job
     - run:
         name: terraform apply
         command: |
-          cd ~/
+          cd ~/test
           terraform apply --auto-approve ../../terraform.plan
 jobs:
 
@@ -54,7 +54,7 @@ jobs:
       - run:
           name: terraform fmt
           command: |
-            cd ~/
+            cd ~/test
             if [ $(terraform fmt | grep -v .terraform | tee fmt_result.txt | wc -l) -gt 0 ]; then
               echo "Format of this terraform files is not appropiate:"
               echo
@@ -75,7 +75,7 @@ jobs:
       - run:
           name: terraform plan
           command: |
-            cd ~/
+            cd ~/test
             terraform plan -out=../../terraform.plan
       - persist_to_workspace:
           root: *working_directory
