@@ -64,10 +64,10 @@ jobs:
           command: |
             cd ~/test
             terraform plan 
-      - persist_to_workspace:
-          root: *working_directory
-          paths:
-            - terraform.plan
+ #     - persist_to_workspace:
+ #         root: *working_directory
+ #         paths:
+ #           - terraform.plan
 
   apply:
     <<: *apply_job
