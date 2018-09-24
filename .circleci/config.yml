@@ -40,11 +40,13 @@ apply_job: &apply_job
     - *restore_repo
     - *terraform_init
     - attach_workspace:
-        at: *working_directory
+        at: *working_directory    
     - run:
         name: terraform apply
         command: |
+
           cd ~/test
+          sed -i "s/--agent=/--agent=$DATADOG_API_KEY/g" scripts/startup.sh
           terraform apply --auto-approve 
 jobs:
 
